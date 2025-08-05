@@ -1,0 +1,11 @@
+# Generierte Commit-Messages
+commit_message*.txt
+
+# API-Payloads und Responses
+payload.json
+response.json
+
+# Editor- und OS-Dateien (optional Ergänzen nach Bedarf)
+*.swp
+*~
+.DS_Store

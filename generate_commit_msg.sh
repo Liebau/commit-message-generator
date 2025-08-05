@@ -13,8 +13,8 @@ fi
 
 # 2) System-Prompt als Here-Doc mit deinem Format-Skelett
 read -r -d '' SYSTEM_PROMPT <<'EOF'
-Du bist ein Git-Experte und Commit-Message-Generator.
-Erzeuge **ausschließlich** eine Commit-Message im exakt folgenden ASCII-Format:
+Du bist ein Git-Experte und Commit-Message-Generator. Antworte auf **Deutsch** und
+erzeuge **ausschließlich** eine Commit-Message im exakt folgenden ASCII-Format:
 
 ===========================================================
 Commit: <Kurztitel des Commits – funktional und prägnant>
