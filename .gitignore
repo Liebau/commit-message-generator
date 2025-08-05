@@ -5,6 +5,11 @@ commit_message*.txt
 payload.json
 response.json
 
+
+mixtral_commit_message.txt
+mixtral_full_prompt.txt
+
+
 # Editor- und OS-Dateien (optional Ergänzen nach Bedarf)
 *.swp
 *~
