@@ -2,6 +2,20 @@
 # Datei: generate_commit_msg.sh
 # Beschreibung: Manuelle Erzeugung einer Git-Commit-Message via GPT-4.1-mini OpenAI-API
 
+
+# --- Logging-Verzeichnis vorbereiten ---
+LOG_ROOT="logs/openai"
+TS="$(date '+%Y-%m-%d_%H-%M-%S')"
+RUN_DIR="${LOG_ROOT}/${TS}"
+mkdir -p "${RUN_DIR}"
+
+PAYLOAD="${RUN_DIR}/payload.json"
+RESPONSE="${RUN_DIR}/response.json"
+COMMIT_TXT="${RUN_DIR}/commit_message.txt"
+
+LATEST_LINK="${LOG_ROOT}/latest" # Symlink auf letzten Lauf
+
+
 # 1) Diff der gestageten Änderungen in Variable speichern
 DIFF=$(git diff --cached --unified=0)
 
@@ -13,8 +27,8 @@ fi
 
 # 2) System-Prompt als Here-Doc mit deinem Format-Skelett
 read -r -d '' SYSTEM_PROMPT <<'EOF'
-Du bist ein Git-Experte und Commit-Message-Generator. Antworte auf **Deutsch** und
-erzeuge **ausschließlich** eine Commit-Message im exakt folgenden ASCII-Format:
+Du bist ein Git-Experte und Commit-Message-Generator.
+Erzeuge auf deutsch **ausschließlich** eine Commit-Message im exakt folgenden ASCII-Format:
 
 ===========================================================
 Commit: <Kurztitel des Commits – funktional und prägnant>
@@ -53,7 +67,7 @@ jq -n \
      ],
      max_tokens: $max,
      temperature: $temp
-   }' > payload.json
+   }' > "${PAYLOAD}"
 
 
 
@@ -61,14 +75,19 @@ jq -n \
 curl -s https://api.openai.com/v1/chat/completions \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
-  -d @payload.json \
-  > response.json
+  -d  @"${PAYLOAD}" \
+  > "${RESPONSE}"
 
 
 
-echo "→ Volle API-Antwort in response.json gespeichert."
+echo "→ Volle API-Antwort gespeichert: ${RESPONSE}"
 
-# 4) Nur den generierten Commit-Text extrahieren und in Datei schreiben
-jq -r '.choices[0].message.content' response.json > commit_message.txt
+# 5) Commit-Text extrahieren
+jq -r '.choices[0].message.content' "${RESPONSE}" > "${COMMIT_TXT}"
+echo "→ Commit-Text gespeichert: ${COMMIT_TXT}"
 
-echo "→ Commit-Text in commit_message.txt gespeichert."
+# 6) Symlink auf letzten Lauf aktualisieren
+
+( cd "$LOG_ROOT" && ln -sfn "$TS" latest )
+echo "→ Symlink aktualisiert: ${LOG_ROOT}/latest -> $(readlink "${LOG_ROOT}/latest")"
+echo "   (resolves to $(readlink -f "${LOG_ROOT}/latest"))"
