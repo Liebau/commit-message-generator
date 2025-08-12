@@ -2,8 +2,7 @@
 commit_message*.txt
 
 # API-Payloads und Responses
-payload.json
-response.json
+logs/
 
 
 mixtral_commit_message.txt
