@@ -28,7 +28,7 @@ fi
 # 2) System-Prompt als Here-Doc mit deinem Format-Skelett
 read -r -d '' SYSTEM_PROMPT <<'EOF'
 Du bist ein Git-Experte und Commit-Message-Generator.
-Erzeuge auf deutsch **ausschließlich** eine Commit-Message im exakt folgenden ASCII-Format:
+Antworte auf **Deutsch** und erzeuge **ausschließlich** eine Commit-Message im exakt folgenden ASCII-Format:
 
 ===========================================================
 Commit: <Kurztitel des Commits – funktional und prägnant>
@@ -91,7 +91,7 @@ echo "→ Commit-Text gespeichert: ${COMMIT_TXT}"
 ( cd "$LOG_ROOT" && ln -sfn "$TS" latest )
 
 # zusätzlicher Symlink im Repo-Root auf die letzte Commit-Message
-ln -sfn "logs/openai/latest/commit_message.txt" "latest-Commit-MSG.txt"
+ln -sfn "logs/openai/latest/commit_message.txt" "latest-Commit-MSG-openai.txt"
 
 
 echo "→ Symlink aktualisiert: ${LOG_ROOT}/latest -> $(readlink "${LOG_ROOT}/latest")"

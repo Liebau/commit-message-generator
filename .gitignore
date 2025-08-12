@@ -4,6 +4,7 @@ commit_message*.txt
 # API-Payloads und Responses
 logs/
 
+latest-Commit-MSG.txt
 
 mixtral_commit_message.txt
 mixtral_full_prompt.txt
