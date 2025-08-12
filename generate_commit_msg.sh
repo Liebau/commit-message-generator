@@ -89,5 +89,10 @@ echo "→ Commit-Text gespeichert: ${COMMIT_TXT}"
 # 6) Symlink auf letzten Lauf aktualisieren
 
 ( cd "$LOG_ROOT" && ln -sfn "$TS" latest )
+
+# zusätzlicher Symlink im Repo-Root auf die letzte Commit-Message
+ln -sfn "logs/openai/latest/commit_message.txt" "latest-Commit-MSG.txt"
+
+
 echo "→ Symlink aktualisiert: ${LOG_ROOT}/latest -> $(readlink "${LOG_ROOT}/latest")"
 echo "   (resolves to $(readlink -f "${LOG_ROOT}/latest"))"
