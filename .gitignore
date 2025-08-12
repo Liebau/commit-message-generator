@@ -5,9 +5,8 @@ commit_message*.txt
 logs/
 
 latest-Commit-MSG.txt
-
-mixtral_commit_message.txt
-mixtral_full_prompt.txt
+latest-Commit-MSG-mixtral.txt
+latest-Commit-MSG-openai.txt
 
 
 # Editor- und OS-Dateien (optional Ergänzen nach Bedarf)
