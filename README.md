@@ -79,3 +79,8 @@ logs/
 > **Hinweis:**  
 > Die Symlinks `latest-Commit-MSG-openai.txt` und `latest-Commit-MSG-mixtral.txt`
 > werden bei jedem Run automatisch aktualisiert und sollten in `.gitignore` stehen.
+
+## Weitere Infos
+
+Ausführliche Beschreibung und Hintergründe im Blog:  
+ [https://gwr-mbh.de/ki-commit-messages-git-diff/](https://gwr-mbh.de/ki-commit-messages-git-diff/)
