@@ -3,6 +3,10 @@
 This repository contains scripts for automatically generating Git commit messages using **OpenAI** and **Mixtral** (Ollama).  
 The generated messages are stored in a structured format and made quickly accessible via symlinks.
 
+**Important Note:**  
+The automatically generated commit messages are a helpful tool but do not replace the developer’s review. Always review and adjust the text before committing to avoid inaccuracies or unsuitable wording.
+
+
 ## Scripts
 
 ### 1. `generate_commit_msg.sh`

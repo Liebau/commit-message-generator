@@ -4,6 +4,10 @@ Dieses Repository enthält Skripte zur automatisierten Erstellung von Git-Commit
 mithilfe von **OpenAI** und **Mixtral** (Ollama).  
 Die generierten Nachrichten werden strukturiert gespeichert und über Symlinks schnell zugänglich gemacht.
 
+
+**Wichtiger Hinweis:**  
+Die automatisch generierten Commit-Messages sind eine Unterstützung, ersetzen jedoch nicht die inhaltliche und sprachliche Prüfung durch den Entwickler. Vor dem Commit sollte der Text immer geprüft und bei Bedarf angepasst werden, um Fehlinformationen oder unpassende Formulierungen zu vermeiden.
+
 ## Skripte
 
 ### 1. `generate_commit_msg.sh`
